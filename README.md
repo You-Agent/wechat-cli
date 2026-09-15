@@ -1,3 +1,5 @@
+This fork adds `wechat-cli image-decrypt FILE --output IMAGE.png`: macOS kvcomm-based V2 recovery, single-part WXGF conversion, and full PNG decoding validation. Install this fork from source and install FFmpeg. No database keys are required. See [setup, limitations and validation notes](docs/macos-image-recovery.md). The upstream npm package does not include this feature.
+
 <div align="center">
 
 # WeChat CLI

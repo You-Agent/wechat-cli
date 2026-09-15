@@ -42,3 +42,9 @@ Thumbs.db
 # Temp files
 *.tmp
 *.bak
+
+# Local recovery artifacts and private data
+outputs/
+*.dat
+*.hevc
+*.statistic

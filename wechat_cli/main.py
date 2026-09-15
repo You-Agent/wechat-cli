@@ -30,7 +30,7 @@ def cli(ctx, config_path):
       wechat-cli new-messages                       # 获取增量新消息
     """
     # init/version 命令不需要 AppContext
-    if ctx.invoked_subcommand in ("init", "version"):
+    if ctx.invoked_subcommand in ("init", "version", "image-decrypt"):
         return
 
     try:
@@ -56,6 +56,9 @@ from .commands.stats import stats
 from .commands.unread import unread
 from .commands.favorites import favorites
 
+from .commands.image_decrypt import image_decrypt
+
+cli.add_command(image_decrypt)
 cli.add_command(init)
 cli.add_command(sessions)
 cli.add_command(history)
