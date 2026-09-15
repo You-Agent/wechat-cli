@@ -62,3 +62,7 @@ brew install ffmpeg
 - [上游 PR #20 数据库运行期捕获实验](https://github.com/huohuoer/wechat-cli/pull/20)
 
 本实现按格式规则独立编写；这些项目无需安装。
+
+## 已有数据库密钥兼容
+
+合入基于上游 PR #20 的派生密钥读取兼容：支持 `sqlcipher_derived_pair`、数据库页 HMAC 校验及 `biz_message_N.db`。解密缓存位于 `~/.wechat-cli/cache`。这只读取已有密钥，不包含运行期捕获或重签逻辑。

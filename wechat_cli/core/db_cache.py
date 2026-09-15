@@ -3,15 +3,14 @@
 import hashlib
 import json
 import os
-import tempfile
 
 from .crypto import full_decrypt, decrypt_wal
 from .key_utils import get_key_info
 
 
 class DBCache:
-    CACHE_DIR = os.path.join(tempfile.gettempdir(), "wechat_cli_cache")
-    MTIME_FILE = os.path.join(tempfile.gettempdir(), "wechat_cli_cache", "_mtimes.json")
+    CACHE_DIR = os.path.expanduser("~/.wechat-cli/cache")
+    MTIME_FILE = os.path.expanduser("~/.wechat-cli/cache/_mtimes.json")
 
     def __init__(self, all_keys, db_dir):
         self._all_keys = all_keys
@@ -79,10 +78,16 @@ class DBCache:
                 return c_path
 
         tmp_path = self._cache_path(rel_key)
-        enc_key = bytes.fromhex(key_info["enc_key"])
-        full_decrypt(db_path, tmp_path, enc_key)
+        key_type = key_info.get("key_type", "raw")
+        if key_type == "sqlcipher_derived_pair":
+            enc_key = bytes.fromhex(key_info["derived_encryption_key"])
+            hmac_key = bytes.fromhex(key_info["derived_hmac_key"])
+        else:
+            enc_key = bytes.fromhex(key_info["enc_key"])
+            hmac_key = None
+        full_decrypt(db_path, tmp_path, enc_key, hmac_key)
         if os.path.exists(wal_path):
-            decrypt_wal(wal_path, tmp_path, enc_key)
+            decrypt_wal(wal_path, tmp_path, enc_key, hmac_key)
         self._cache[rel_key] = (db_mtime, wal_mtime, tmp_path)
         self._save_persistent_cache()
         return tmp_path
