@@ -95,6 +95,10 @@ wechat-cli init
 
 这一步会自动检测微信数据目录、提取加密密钥，并保存到 `~/.wechat-cli/`。
 
+已有配置和密钥时直接复用。文件缺失时，请用户登录微信后手动运行 `wechat-cli init`；确认已有密钥失效时，先备份配置和密钥，再请用户手动运行 `wechat-cli init --force`。
+
+本 fork 的 `init` 仍使用上游取钥实现，不保证适用于所有微信版本。macOS 上它可能自动重签微信，执行前应说明影响。图片和语音读取的额外准备见[媒体说明](docs/macos-media.md)。
+
 ![init-claude-code-1](image/init-claude-code-1.png)
 
 如果是 mac，需要执行 sudo 命令，然后需要输入密码：

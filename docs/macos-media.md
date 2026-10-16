@@ -32,9 +32,7 @@ brew install ffmpeg
 
 复用 `~/.wechat-cli/` 中的配置和已有密钥。支持 `sqlcipher_derived_pair`、数据库页 HMAC 校验及 `biz_message_N.db`；解密缓存位于 `~/.wechat-cli/cache`。
 
-配置或密钥文件缺失时，请用户登录微信后，手动运行 `wechat-cli init`。确认已有密钥失效时，先备份配置和密钥，再请用户手动运行 `wechat-cli init --force` 重新取钥。
-
-`init` 仍使用上游取钥实现，不保证适用于所有微信版本。macOS 上它可能自动重签微信，执行前应说明影响。媒体库缺密钥不等于其他已有密钥失效，不因此强制重新初始化。
+工具本身的初始化见 [README](../README_CN.md)。媒体库缺密钥不等于其他已有密钥失效，不因此强制重新初始化。
 
 ### 补取媒体库密钥
 
