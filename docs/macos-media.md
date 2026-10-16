@@ -26,11 +26,13 @@ brew install ffmpeg
 .venv/bin/wechat-cli voice-export --help
 ```
 
-上游 npm 包不包含本 fork 的新增功能。已有 clone 可 `git pull` 后重新执行安装；需要语音时保留 `audio` 安装选项。后文的 `wechat-cli` 可替换为源码虚拟环境中的 `.venv/bin/wechat-cli`。
+上游 npm 包不包含本 fork 的新增功能。已有 clone 可 `git pull` 后重新执行安装；需要语音时保留 `audio` 安装选项。命令不在 PATH 中时，先检查已有源码目录的 `.venv/bin/wechat-cli`。后文的 `wechat-cli` 可替换为该路径。
 
 ## 数据库密钥
 
 复用 `~/.wechat-cli/` 中的配置和已有密钥。支持 `sqlcipher_derived_pair`、数据库页 HMAC 校验及 `biz_message_N.db`；解密缓存位于 `~/.wechat-cli/cache`。
+
+配置或密钥文件缺失时，请用户登录微信后，手动运行 `wechat-cli init`。确认已有密钥失效时，先备份配置和密钥，再请用户手动运行 `wechat-cli init --force` 重新取钥。
 
 `init` 仍使用上游取钥实现，不保证适用于所有微信版本。macOS 上它可能自动重签微信，执行前应说明影响。媒体库缺密钥不等于其他已有密钥失效，不因此强制重新初始化。
 
