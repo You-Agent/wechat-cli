@@ -57,8 +57,12 @@ from .commands.unread import unread
 from .commands.favorites import favorites
 
 from .commands.image_decrypt import image_decrypt
+from .commands.media_keys import media_keys
+from .commands.voice_export import voice_export
 
 cli.add_command(image_decrypt)
+cli.add_command(media_keys)
+cli.add_command(voice_export)
 cli.add_command(init)
 cli.add_command(sessions)
 cli.add_command(history)

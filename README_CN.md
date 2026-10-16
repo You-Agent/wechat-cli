@@ -1,5 +1,7 @@
 本 fork 新增 macOS 缓存图片解密：`wechat-cli image-decrypt FILE --output IMAGE.png`。完整安装、验证边界和数据库取钥实验说明见 [使用文档](docs/macos-image-recovery.md)。无需数据库密钥；上游 npm 包不包含此功能。
 
+新增实验命令 `media-keys` 和 `voice-export`，用于 macOS 媒体库取钥与本机语音导出 WAV，不执行语音识别。安装方法、操作步骤与验证范围见[语音导出说明](docs/voice-export.md)。
+
 <div align="center">
 
 # WeChat CLI
