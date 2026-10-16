@@ -1,6 +1,4 @@
-This fork adds `wechat-cli image-decrypt FILE --output IMAGE.png`: macOS kvcomm-based V2 recovery, single-part WXGF conversion, and full PNG decoding validation. Install this fork from source and install FFmpeg. No database keys are required. See [setup, limitations and validation notes](docs/macos-image-recovery.md). The upstream npm package does not include this feature.
-
-This fork also adds experimental `media-keys` and `voice-export` commands for bounded macOS media key capture and local voice export to WAV, without speech recognition. See [installation, usage and verification limits](docs/voice-export.md).
+This fork adds macOS image recovery, experimental media key capture, and local voice audio access. Voice WAV files can serve as an internal cache for playback or separately authorized speech recognition. See [installation, usage and verification limits](docs/macos-media.md). Install this fork from source; the upstream npm package does not include these features.
 
 <div align="center">
 
